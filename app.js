@@ -18,6 +18,7 @@ const httpPort = 3000;
 // middleware and routes
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended:true}));
+app.use('/api/users', require('./src/routes/user.js'));
 
 // server listen start
 app.listen(httpPort, () => console.log(`Yowl HTTP server version ${metadata.version} listening on port ${httpPort}`));
