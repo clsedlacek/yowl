@@ -13,7 +13,7 @@ const metadata = require('./package.json');
 
 // preliminary server creation
 const app = express();
-const httpPort = 3000;
+const httpPort = 3001;
 
 // middleware and routes
 app.use(bodyParser.json());
