@@ -1,4 +1,5 @@
 import React from 'react';
+import socketIoClient from 'socket.io-client';
 import logo from './logo.svg';
 import './App.css';
 
@@ -6,7 +7,8 @@ class App extends React.Component {
 	constructor() {
 		super();
 		this.state = {
-			users: []
+			users: [],
+			socketEndpoint: 'http://127.0.0.1:3001'
 		};
 	}
 
@@ -14,6 +16,8 @@ class App extends React.Component {
 		fetch('/api/users')
 		.then(res => res.json())
 		.then(users => this.setState({ users }));
+
+		const socket = socketIoClient(this.state.socketEndpoint);
 	}
 
 	render() {
