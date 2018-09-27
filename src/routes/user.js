@@ -9,6 +9,18 @@ const router = express.Router();
 // GET requests
 router.get('/', (req, res) => {
 	// get all users
+	res.json(
+		[
+			{
+				id: 1,
+				userName: "admin"
+			},
+			{
+				id: 2,
+				userName: "gizmo"
+			}
+		]
+	);
 });
 
 router.get('/:userId', (req, res) => {
