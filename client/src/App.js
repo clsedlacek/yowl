@@ -1,5 +1,5 @@
 import React from 'react';
-import socketIoClient from 'socket.io-client';
+import WebsocketService from './services/WebsocketService.js';
 import { Route, Switch } from 'react-router-dom';
 import HomePage from './pages/home.js';
 import MapPage from './pages/map.js';
@@ -21,7 +21,7 @@ class App extends React.Component {
 		.then(res => res.json())
 		.then(users => this.setState({ users }));
 
-		const socket = socketIoClient(this.state.socketEndpoint);
+		const socket = new WebsocketService(this.state.socketEndpoint);
 	}
 
 	render() {
