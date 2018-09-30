@@ -6,6 +6,9 @@ const morgan = require('morgan');
 const bodyParser = require('body-parser');
 const multer = require('multer');
 
+// websocket connection / API
+const socketConnection = require('./src/socket/connection.js');
+
 // base directory store
 global.__basedir = __dirname;
 global.__publicdir = __dirname + '/public';
@@ -27,10 +30,7 @@ const server = http.createServer(app);
 const io = socketIo(server);
 
 // socket.io listen start
-io.on('connection', socket => {
-	console.log('New client connected');
-	socket.on('disconnect', () => console.log('Client disconnected'));
-});
+io.on('connection', socketConnection.connect);
 
 
 // server listen start
