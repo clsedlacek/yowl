@@ -3,6 +3,10 @@ import { observable, action } from 'mobx';
 class CurrentUserStore {
 	@observable currentUser = undefined;
 
+	constructor(socket) {
+		this.socket = socket;
+	}
+
 	@action setUser(user) {
 		this.currentUser = user;
 	}
@@ -12,4 +16,4 @@ class CurrentUserStore {
 	}
 }
 
-export default new CurrentUserStore();
+export default CurrentUserStore;

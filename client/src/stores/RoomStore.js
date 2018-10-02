@@ -1,9 +1,9 @@
 import { observable, action } from 'mobx';
 
 class RoomStore {
-	@observable room = undefined;
-	@observable users = [];
-	@observable recentMessages = [];
+	@observable room = {id: 1, roomName: 'Test Room Name'};
+	@observable users = [{id: 1, userName: 'admin'}, {id: 2, userName: 'gizmo'}];
+	@observable recentMessages = [{id: 1, messageBody: 'Message 1'}, {id: 2, messageBody: 'Message 2 test'}, {id: 3, messageBody: 'Message 3 foobar'}];
 
 	constructor(socket) {
 		this.socket = socket;
@@ -45,5 +45,5 @@ class RoomStore {
 	}
 }
 
-export default new RoomStore();
+export default RoomStore;
 

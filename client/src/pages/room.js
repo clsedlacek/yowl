@@ -1,8 +1,13 @@
 import React from 'react';
+import { inject, observer } from 'mobx-react';
 import Layout from '../components/Layout/Layout.js';
 
+@inject('currentUserStore', 'roomStore')
+@observer
 class RoomRoute extends React.Component {
 	render() {
+		const roomStore = this.props.roomStore;
+
 		return (
 			<div>
 				<Layout>
@@ -21,15 +26,21 @@ class RoomRoute extends React.Component {
 							visual chat room goes here
 							<div className="stage__users">
 								<ul className="stageUsers">
-									<li className="stageUsers__user">admin</li>
-									<li className="stageUsers__user">gizmo</li>
+									{roomStore.users.map(user =>
+										<li key={user.id} className="stageUsers__user">
+											<img src="" alt={`Avatar of ${user.userName}`} />
+											{user.userName}
+										</li>
+									)}
 								</ul>
 							</div>
 						</div>
 						<div className="room__userList">
+							<h2>{roomStore.room.roomName}</h2>
 							<ul className="userList">
-								<li className="userList__user">admin</li>
-								<li className="userList__user">gizmo</li>
+								{roomStore.users.map(user =>
+									<li key={user.id} className="userList__user">{user.userName}</li>
+								)}
 							</ul>
 						</div>
 					</div>
