@@ -1,10 +1,13 @@
 import React from 'react';
+import Layout from '../components/Layout/Layout.js';
 
 class HomeRoute extends React.Component {
 	render() {
 		return (
 			<div>
-				home route contents
+				<Layout>
+					home route contents
+				</Layout>
 			</div>
 		);
 	}
